@@ -1,24 +1,72 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Alert from './Components/Alert';
+// import About from './Components/About';
+import Navbar from './Components/Navbar';
+import Textform from './Components/Textform';
+import React,{useState} from 'react';
+// import { BrowserRouter, Routes, Route} from "react-router-dom";
+
+
 
 function App() {
+
+
+  const [mode,setmode] = useState('light');
+
+  const togglemode=()=>{
+    if(mode==='dark'){
+      setmode('light');
+      document.body.style.backgroundColor='white';
+    }else{
+      setmode('dark');
+      document.body.style.backgroundColor='grey';
+      showalert("Dark Mode is ON","Success");
+      // setInterval(()=>{
+      //   document.title='Textutils is Amazing mode';
+      // },2000);
+      // setInterval(()=>{
+      //   document.title='Install - Textutils Now';
+      // },1500);
+    }
+  }
+
+  const [alert,setalert] = useState(null);
+
+  const showalert=(message,type)=>{
+
+    setalert({
+      msg:message,
+      ty:type
+    })
+    setTimeout(()=>{
+      setalert(null);
+    },1500);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    {/* <BrowserRouter> */}
+    <Navbar titles="Textutils" mode={mode} togglemode={togglemode}/>
+    <Alert alert={alert}/>
+    <div className="container my-2">
+    
+    {/* <Routes>
+        <Route path="/" element={<Textform heading="Enter Text to analyze" mode={mode} showalert={showalert}/>} />
+        <Route path="/about" element={<About/>} />
+      </Routes> */}
+
+<Textform heading="Enter Text to analyze" mode={mode} showalert={showalert}/>
+      
+          
+           
+         
+      {/* <About/> */}
     </div>
+    {/* </BrowserRouter> */}
+    
+    </>
+
+    
   );
 }
 
