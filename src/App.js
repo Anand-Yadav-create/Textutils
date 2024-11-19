@@ -14,7 +14,13 @@ function App() {
 
   const [mode,setmode] = useState('light');
 
+  // const removecolor=()=>{
+  //   document.body.classList.remove('bg-success');
+  // }
+
   const togglemode=()=>{
+
+    // removecolor();
     if(mode==='dark'){
       setmode('light');
       document.body.style.backgroundColor='white';
@@ -29,6 +35,7 @@ function App() {
       //   document.title='Install - Textutils Now';
       // },1500);
     }
+    // document.body.classList.add('bg-success');
   }
 
   const [alert,setalert] = useState(null);
@@ -51,8 +58,8 @@ function App() {
     <div className="container my-2">
     
     <Routes>
-        <Route path="/" element={<Textform heading="Enter Text to analyze" mode={mode} showalert={showalert}/>} />
-        <Route path="/about" element={<About/>} />
+        <Route path="/" element={<Textform heading="Word Counter,Character Counter,Remove Extra Spaces" mode={mode} showalert={showalert}/>} />
+        <Route path="/about" element={<About mode={mode}/>} />
       </Routes>
 
 {/* <Textform heading="Enter Text to analyze" mode={mode} showalert={showalert}/> */}

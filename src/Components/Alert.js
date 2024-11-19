@@ -9,6 +9,9 @@ export default function Alert(props) {
 
     
   return (
+
+    <div style={{height:'50px'}}>
+      {
     props.alert&&<div>
 
             <div className="alert alert-success d-flex align-items-center" role="alert">
@@ -19,6 +22,9 @@ export default function Alert(props) {
             </div>
             </div>
       
+    </div>
+}
+
     </div>
   )
 }
